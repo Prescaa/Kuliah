@@ -1,6 +1,6 @@
-package Soal2_Praktikum;
+package praktikum2.soal2;
 
-public class PRAK202_2310817210023_RIFKYPUTRAMAHARDIKA {
+public class Soal2Main {
 	public static void main(String[] args) { 
 		Kopi kopi1 = new Kopi(); 
 	    kopi1.namaKopi = "Espresso"; 

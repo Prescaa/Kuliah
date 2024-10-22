@@ -1,4 +1,4 @@
-package Soal2_Praktikum;
+package praktikum2.soal2;
 
 class Kopi {
     String namaKopi;

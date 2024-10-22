@@ -1,4 +1,4 @@
-package Soal3_Praktikum;
+package praktikum2.soal3;
 
 //pada soal digunakan "public class Employee", yang dimana seharusnya kita menggunakan "Pegawai" dan menjadi "public class Pegawai"
 //"public class Employee"

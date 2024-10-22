@@ -1,6 +1,6 @@
-package Soal1_Praktikum;
+package praktikum2.soal1;
 
-public class PRAK201_2310817210023_RIFKYPUTRAMAHARDIKA {
+public class Soal1Main {
 	public static void main(String[] args) {
 		classbuah buah1 = new classbuah();
 		buah1.nama = "Apel";

@@ -1,4 +1,4 @@
-package Soal1_Praktikum;
+package praktikum2.soal1;
 
 class classbuah {
 	String nama;

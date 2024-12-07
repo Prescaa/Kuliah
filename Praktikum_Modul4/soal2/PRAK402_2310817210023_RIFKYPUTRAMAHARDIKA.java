@@ -6,8 +6,8 @@ public class PRAK402_2310817210023_RIFKYPUTRAMAHARDIKA {
 	public static void main (String args[]) {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Pilih jenis hewan yang ingin diinputkan: ");
-		System.out.println("1. Kucing ");
-		System.out.println("2. Anjing ");
+		System.out.println("1 = Kucing ");
+		System.out.println("2 = Anjing ");
 		System.out.print("Masukkan pilihan: ");
 		int pilihan = input.nextInt();
 		input.nextLine();
@@ -16,7 +16,7 @@ public class PRAK402_2310817210023_RIFKYPUTRAMAHARDIKA {
 		String nama = input.nextLine();
 		System.out.print("Ras: ");
 		String ras = input.nextLine();
-		System.out.print("Warna bulu: ");
+		System.out.print("Warna Bulu: ");
 		String warnaBulu = input.nextLine();
 		
 		if(pilihan == 1) {		

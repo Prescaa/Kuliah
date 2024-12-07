@@ -2,7 +2,7 @@ package soal2;
 
 import java.util.Scanner;
 
-public class Main {
+public class PRAK402_2310817210023_RIFKYPUTRAMAHARDIKA {
 	public static void main (String args[]) {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Pilih jenis hewan yang ingin diinputkan: ");

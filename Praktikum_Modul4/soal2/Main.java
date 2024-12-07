@@ -1,4 +1,4 @@
-package soal2_prak4;
+package soal2;
 
 import java.util.Scanner;
 

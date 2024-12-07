@@ -1,7 +1,7 @@
 package soal1;
 
 public class HewanPeliharaan {
-	String nama;
+	private String nama;
 	private String ras;
 	
 	public HewanPeliharaan(String r, String n) {

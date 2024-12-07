@@ -1,4 +1,4 @@
-package soal1_prak4;
+package soal1;
 
 public class HewanPeliharaan {
 	private String nama;

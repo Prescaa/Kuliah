@@ -1,4 +1,4 @@
-package soal2_prak4;
+package soal2;
 
 public class Kucing extends HewanPeliharaan{
 	private String warnaBulu;

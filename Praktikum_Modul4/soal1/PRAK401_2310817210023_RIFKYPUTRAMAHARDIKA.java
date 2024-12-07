@@ -2,7 +2,7 @@ package soal1;
 
 import java.util.Scanner;
 
-public class Main {
+public class PRAK401_2310817210023_RIFKYPUTRAMAHARDIKA {
 	public static void main(String args[]) {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Nama Hewan Peliharaan: ");

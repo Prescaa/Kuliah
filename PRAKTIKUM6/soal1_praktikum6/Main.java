@@ -28,7 +28,7 @@ public class Main {
         JTable tabel = new JTable(modelTabel);
 
         for (int i = 0; i < dataMahasiswa.length; i++) {
-            String[] baris = {dataMahasiswa[i].getNIM(), dataMahasiswa[i].getNama(), ""}; // Kolom kosong
+            String[] baris = {dataMahasiswa[i].getNIM(), dataMahasiswa[i].getNama(), ""};
             modelTabel.addRow(baris);
         }
 

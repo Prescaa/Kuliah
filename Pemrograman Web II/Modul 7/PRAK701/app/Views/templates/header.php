@@ -16,11 +16,11 @@
             flex: 1;
         }
         header {
-            background-color: #FFD700; /* Kuning */
+            background-color: #FFD700;
             padding: 1rem;
         }
         footer {
-            background-color: #e0e0e0; /* Abu-abu */
+            background-color: #e0e0e0;
             padding: 1rem;
             text-align: center;
         }

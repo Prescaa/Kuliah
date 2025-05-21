@@ -10,11 +10,10 @@ $routes->get('/', function () {
     return view('home');
 });
 
-// ROUTE LOGIN/LOGOUT
 $routes->get('/login', 'Login::index');
 $routes->post('/login', 'Login::processLogin');
 $routes->get('/logout', 'Login::logout');
-// ROUTE BOOKS (PROTECTED)
+
 $routes->group('', ['filter' => 'auth'], function($routes) {
     $routes->get('/books', 'Books::index');
     $routes->get('/books/create', 'Books::create');

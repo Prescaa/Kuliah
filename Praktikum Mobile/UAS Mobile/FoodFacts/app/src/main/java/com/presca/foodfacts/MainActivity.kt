@@ -98,7 +98,6 @@ class MainActivity : ComponentActivity() {
                                 state = productState,
                                 onRefresh = { productViewModel.refreshProducts() },
                                 onClickProduct = { product ->
-                                    // Pass only the product code, not the entire object
                                     navController.navigate("product_detail/${product.code}")
                                 },
                                 navController = navController,
@@ -116,13 +115,10 @@ class MainActivity : ComponentActivity() {
                             if (productInfo != null) {
                                 ProductDetailScreen(product = productInfo, navController = navController)
                             } else {
-                                // Show loading or error if product not found
                                 Text("Memuat detail produk...", modifier = Modifier.fillMaxSize(), textAlign = TextAlign.Center)
                                 LaunchedEffect(productCode) {
-                                    // Optionally trigger a refresh if the product wasn't found in current state
-                                    // Or handle the case where it might genuinely not exist
                                     if (productCode != null && productInfo == null) {
-                                        productViewModel.refreshProducts() // Try to re-fetch if not found
+                                        productViewModel.refreshProducts()
                                     }
                                 }
                             }
@@ -144,7 +140,7 @@ class MainActivity : ComponentActivity() {
 fun SplashScreen(navController: NavController, authViewModel: AuthViewModel) {
     val scope = rememberCoroutineScope()
     LaunchedEffect(Unit) {
-        delay(2000) // Show splash screen for 2 seconds
+        delay(2000)
         scope.launch {
             if (authViewModel.isLoggedIn()) {
                 navController.navigate("dashboard") {
@@ -161,13 +157,13 @@ fun SplashScreen(navController: NavController, authViewModel: AuthViewModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.primary), // Or any color you prefer for the splash background
+            .background(MaterialTheme.colorScheme.primary),
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.logo_foodfacts), // Make sure this resource exists in your drawable folder
+            painter = painterResource(id = R.drawable.logo_foodfacts),
             contentDescription = "FoodFacts Logo",
-            modifier = Modifier.size(200.dp) // Adjust size as needed
+            modifier = Modifier.size(200.dp)
         )
     }
 }

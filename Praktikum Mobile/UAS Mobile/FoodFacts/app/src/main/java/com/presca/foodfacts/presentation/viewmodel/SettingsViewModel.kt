@@ -17,7 +17,6 @@ class SettingsViewModel(
     private val _uiState = MutableStateFlow(SettingsUiState())
     val uiState: StateFlow<SettingsUiState> = _uiState.asStateFlow()
 
-    // State untuk pesan kesalahan/sukses yang akan ditampilkan di UI
     private val _message = MutableStateFlow<String?>(null)
     val message: StateFlow<String?> = _message.asStateFlow()
 
@@ -48,19 +47,7 @@ class SettingsViewModel(
             _uiState.update { it.copy(darkModeEnabled = enabled) }
         }
     }
-
-    /**
-     * Memperbarui profil pengguna (nama, email, tanggal lahir).
-     * Memberikan umpan balik melalui callback onResult.
-     *
-     * @param newName Nama baru pengguna.
-     * @param newEmail Email baru pengguna.
-     * @param imageUri URI gambar profil (bisa null).
-     * @param newDateOfBirth Tanggal lahir baru (bisa null atau string kosong).
-     * @param onResult Callback yang dipanggil setelah operasi selesai: (Boolean, String) -> Unit
-     * Boolean: true jika berhasil, false jika gagal.
-     * String: Pesan status/kesalahan.
-     */
+    
     fun updateProfile(newName: String, newEmail: String, imageUri: String?, newDateOfBirth: String?, onResult: (Boolean, String) -> Unit) {
         viewModelScope.launch {
             val oldProfile = userPreferences.getFullUserProfile()
@@ -68,54 +55,43 @@ class SettingsViewModel(
             var success = true
             var message = "Profil berhasil diperbarui!"
 
-            // 1. Update nama dan gambar profil secara lokal di preferences dan state UI
-            // Ini dilakukan terlebih dahulu karena tidak memerlukan panggilan API
             userPreferences.saveUserProfile(newName, oldProfile.email, imageUri, oldProfile.dateOfBirth)
             _uiState.update { it.copy(userProfile = it.userProfile.copy(name = newName, profileImage = imageUri)) }
 
 
-            // 2. Perbarui Email jika ada perubahan
             if (oldProfile.email != newEmail) {
                 authRepository.updateEmail(oldProfile.email, newEmail)
                     .onSuccess {
-                        // Email berhasil diperbarui di database, simpan ke preferences
                         userPreferences.saveUserProfile(newName, newEmail, imageUri, oldProfile.dateOfBirth)
                         _uiState.update { it.copy(userProfile = it.userProfile.copy(email = newEmail)) }
                     }
                     .onFailure { e ->
-                        // Jika update email gagal, kembalikan email lama ke preferences dan state UI
-                        userPreferences.saveUserProfile(newName, oldProfile.email, imageUri, oldProfile.dateOfBirth) // Kembalikan email lama
+                        userPreferences.saveUserProfile(newName, oldProfile.email, imageUri, oldProfile.dateOfBirth)
                         _uiState.update { it.copy(userProfile = it.userProfile.copy(email = oldProfile.email)) }
                         success = false
                         message = "Gagal memperbarui email: ${e.message ?: "Terjadi kesalahan"}"
-                        _message.value = message // Set pesan untuk ditampilkan di UI
-                        onResult(success, message) // Beri tahu UI dan keluar dari coroutine
-                        return@launch // Hentikan eksekusi coroutine lebih lanjut
+                        _message.value = message
+                        onResult(success, message)
+                        return@launch
                     }
             }
 
-            // 3. Perbarui Tanggal Lahir jika ada perubahan (hanya jika email update berhasil atau tidak ada update email)
             if (success && oldProfile.dateOfBirth != newDateOfBirth) {
-                // Gunakan newEmail yang mungkin sudah diupdate dari langkah sebelumnya
                 authRepository.updateDateOfBirth(newEmail, newDateOfBirth)
                     .onSuccess {
-                        // Tanggal lahir berhasil diperbarui di database, simpan ke preferences
                         userPreferences.saveUserProfile(newName, newEmail, imageUri, newDateOfBirth)
                         _uiState.update { it.copy(userProfile = it.userProfile.copy(dateOfBirth = newDateOfBirth)) }
                     }
                     .onFailure { e ->
-                        // Jika update tanggal lahir gagal, kembalikan tanggal lahir lama ke preferences dan state UI
-                        userPreferences.saveUserProfile(newName, newEmail, imageUri, oldProfile.dateOfBirth) // Kembalikan tanggal lahir lama
+                        userPreferences.saveUserProfile(newName, newEmail, imageUri, oldProfile.dateOfBirth)
                         _uiState.update { it.copy(userProfile = it.userProfile.copy(dateOfBirth = oldProfile.dateOfBirth)) }
                         success = false
                         message = "Gagal memperbarui tanggal lahir: ${e.message ?: "Terjadi kesalahan"}"
-                        _message.value = message // Set pesan untuk ditampilkan di UI
-                        // Tidak return@launch di sini, karena update email (jika ada) mungkin sudah berhasil
+                        _message.value = message
                     }
             }
 
-            // Beri tahu UI hasil akhir dari semua operasi
-            _message.value = message // Set pesan untuk ditampilkan di UI
+            _message.value = message
             onResult(success, message)
         }
     }
@@ -134,7 +110,6 @@ class SettingsViewModel(
         }
     }
 
-    // Fungsi untuk mengkonsumsi pesan setelah ditampilkan di UI
     fun consumeMessage() {
         _message.value = null
     }

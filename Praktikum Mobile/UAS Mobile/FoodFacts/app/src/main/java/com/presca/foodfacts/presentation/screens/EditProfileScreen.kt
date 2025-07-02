@@ -63,23 +63,21 @@ fun EditProfileScreen(
     var newPasswordVisibility by remember { mutableStateOf(false) }
     var confirmPasswordVisibility by remember { mutableStateOf(false) }
 
-    // Load user profile when the screen is first composed
     LaunchedEffect(Unit) {
         settingsViewModel.loadUserProfile()
     }
 
-    // Update local state variables when ViewModel's userProfile changes
     LaunchedEffect(uiState.userProfile) {
         name = uiState.userProfile.name
         email = uiState.userProfile.email
         dateOfBirth = uiState.userProfile.dateOfBirth ?: ""
     }
 
-    // Display Toast message when settingsMessage changes
+
     LaunchedEffect(settingsMessage) {
         settingsMessage?.let { message ->
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-            settingsViewModel.consumeMessage() // Consume the message to avoid showing it again
+            settingsViewModel.consumeMessage()
         }
     }
 

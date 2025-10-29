@@ -201,7 +201,7 @@ if df is not None:
         if selected_cost_metric in df_filtered.columns and score_col in df_filtered.columns and country_col in df_filtered.columns and not df_filtered.empty:
             score_text = f"{global_avg_score:.1f}" if global_avg_score is not None else 'N/A'
             cost_text = f"{global_avg_cost:.1f}" if global_avg_cost is not None else 'N/A'
-            st.caption(f"Rata-rata Global: Skor Keseluruhan={score_text}, {selected_cost_metric}={cost_text}")
+            st.markdown(f"#### Rata-rata Global: Skor Keseluruhan vs 'Cost of Living Index")
             fig_scatter_cost = px.scatter(df_filtered,
                                           x=selected_cost_metric, y=score_col, color=country_col,
                                           hover_data=[name_col, rank_col, country_col],
@@ -394,6 +394,7 @@ if df is not None:
         st.dataframe(df_filtered)
 else:
     st.error("Gagal memuat data. Silakan periksa file CSV.")
+
 
 
 

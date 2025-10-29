@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import os
 import plotly.express as px
 import pycountry
 
@@ -89,7 +90,8 @@ def get_iso_alpha3(country_name):
         return None
 
 # 5. MUAT DATA
-NAMA_FILE_CSV = "Data_Universitas_Final.csv"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+NAMA_FILE_CSV = os.path.join(BASE_DIR, "Data_Universitas_Final.csv")
 df = load_data(NAMA_FILE_CSV)
 
 # 6. MEMBUAT DASHBOARD
@@ -392,4 +394,5 @@ if df is not None:
         st.dataframe(df_filtered)
 else:
     st.error("Gagal memuat data. Silakan periksa file CSV.")
+
 

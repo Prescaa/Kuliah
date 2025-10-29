@@ -96,7 +96,10 @@ df = load_data(NAMA_FILE_CSV)
 
 # 6. MEMBUAT DASHBOARD
 if df is not None:
-    st.image("MIT.jpg", use_container_width=True)
+try:
+    st.image(os.path.join(os.path.dirname(__file__), "MIT.jpg"), use_container_width=True)
+except:
+    st.warning("⚠️ Gambar header tidak tersedia")
     st.title("Dashboard Kualitas Universitas & Biaya Hidup 2024")
     st.markdown("### About Us")
     st.markdown("""
@@ -394,5 +397,6 @@ if df is not None:
         st.dataframe(df_filtered)
 else:
     st.error("Gagal memuat data. Silakan periksa file CSV.")
+
 
 

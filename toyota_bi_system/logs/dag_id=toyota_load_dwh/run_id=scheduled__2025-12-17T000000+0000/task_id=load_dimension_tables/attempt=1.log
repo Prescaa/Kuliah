@@ -1,0 +1,24 @@
+[2025-12-18T00:00:05.555+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toyota_load_dwh.load_dimension_tables scheduled__2025-12-17T00:00:00+00:00 [queued]>
+[2025-12-18T00:00:05.579+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toyota_load_dwh.load_dimension_tables scheduled__2025-12-17T00:00:00+00:00 [queued]>
+[2025-12-18T00:00:05.580+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2025-12-18T00:00:05.837+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): load_dimension_tables> on 2025-12-17 00:00:00+00:00
+[2025-12-18T00:00:05.864+0000] {standard_task_runner.py:57} INFO - Started process 28854 to run task
+[2025-12-18T00:00:05.870+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toyota_load_dwh', 'load_dimension_tables', 'scheduled__2025-12-17T00:00:00+00:00', '--job-id', '422', '--raw', '--subdir', 'DAGS_FOLDER/dag_dwh.py', '--cfg-path', '/tmp/tmph8c0ehdf']
+[2025-12-18T00:00:05.877+0000] {standard_task_runner.py:85} INFO - Job 422: Subtask load_dimension_tables
+[2025-12-18T00:00:06.026+0000] {task_command.py:415} INFO - Running <TaskInstance: toyota_load_dwh.load_dimension_tables scheduled__2025-12-17T00:00:00+00:00 [running]> on host 2c3879603899
+[2025-12-18T00:00:06.253+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rifky' AIRFLOW_CTX_DAG_ID='toyota_load_dwh' AIRFLOW_CTX_TASK_ID='load_dimension_tables' AIRFLOW_CTX_EXECUTION_DATE='2025-12-17T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-17T00:00:00+00:00'
+[2025-12-18T00:00:06.257+0000] {logging_mixin.py:151} INFO - Loading dimension tables...
+[2025-12-18T00:00:06.259+0000] {logging_mixin.py:151} INFO - 📦 Loading dimension tables...
+[2025-12-18T00:00:06.721+0000] {logging_mixin.py:151} INFO -    🚗 Creating DimCar...
+[2025-12-18T00:00:06.982+0000] {logging_mixin.py:151} INFO - ❌ Error loading dimensions: (psycopg2.errors.DependentObjectsStillExist) cannot drop table "DimCar" because other objects depend on it
+DETAIL:  view fact_sales depends on table "DimCar"
+view dashboard_data depends on view fact_sales
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+
+[SQL: 
+DROP TABLE "DimCar"]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2025-12-18T00:00:06.983+0000] {python.py:194} INFO - Done. Returned value was: False
+[2025-12-18T00:00:07.035+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=toyota_load_dwh, task_id=load_dimension_tables, execution_date=20251217T000000, start_date=20251218T000005, end_date=20251218T000007
+[2025-12-18T00:00:07.088+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-12-18T00:00:07.142+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

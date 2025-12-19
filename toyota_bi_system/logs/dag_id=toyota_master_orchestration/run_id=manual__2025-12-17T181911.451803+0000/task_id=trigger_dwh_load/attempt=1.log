@@ -1,0 +1,14 @@
+[2025-12-17T18:20:54.612+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toyota_master_orchestration.trigger_dwh_load manual__2025-12-17T18:19:11.451803+00:00 [queued]>
+[2025-12-17T18:20:54.628+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toyota_master_orchestration.trigger_dwh_load manual__2025-12-17T18:19:11.451803+00:00 [queued]>
+[2025-12-17T18:20:54.629+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-12-17T18:20:54.802+0000] {taskinstance.py:1380} INFO - Executing <Task(TriggerDagRunOperator): trigger_dwh_load> on 2025-12-17 18:19:11.451803+00:00
+[2025-12-17T18:20:54.818+0000] {standard_task_runner.py:57} INFO - Started process 6301 to run task
+[2025-12-17T18:20:54.828+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toyota_master_orchestration', 'trigger_dwh_load', 'manual__2025-12-17T18:19:11.451803+00:00', '--job-id', '403', '--raw', '--subdir', 'DAGS_FOLDER/dag_orchestrate.py', '--cfg-path', '/tmp/tmpdn0cys47']
+[2025-12-17T18:20:54.834+0000] {standard_task_runner.py:85} INFO - Job 403: Subtask trigger_dwh_load
+[2025-12-17T18:20:54.957+0000] {task_command.py:415} INFO - Running <TaskInstance: toyota_master_orchestration.trigger_dwh_load manual__2025-12-17T18:19:11.451803+00:00 [running]> on host 2c3879603899
+[2025-12-17T18:20:55.083+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rifky' AIRFLOW_CTX_DAG_ID='toyota_master_orchestration' AIRFLOW_CTX_TASK_ID='trigger_dwh_load' AIRFLOW_CTX_EXECUTION_DATE='2025-12-17T18:19:11.451803+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-17T18:19:11.451803+00:00'
+[2025-12-17T18:20:55.210+0000] {trigger_dagrun.py:209} INFO - Waiting for toyota_load_dwh on 2025-12-17T18:20:55.085758+00:00 to become allowed state ['success'] ...
+[2025-12-17T18:21:25.257+0000] {trigger_dagrun.py:222} INFO - toyota_load_dwh finished with allowed state success
+[2025-12-17T18:21:25.272+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=toyota_master_orchestration, task_id=trigger_dwh_load, execution_date=20251217T181911, start_date=20251217T182054, end_date=20251217T182125
+[2025-12-17T18:21:25.341+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-12-17T18:21:25.379+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,26 @@
+[2025-12-17T20:01:39.259+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toyota_load_dwh.load_dimension_tables manual__2025-12-17T20:01:35.997449+00:00 [queued]>
+[2025-12-17T20:01:39.275+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toyota_load_dwh.load_dimension_tables manual__2025-12-17T20:01:35.997449+00:00 [queued]>
+[2025-12-17T20:01:39.275+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2025-12-17T20:01:39.423+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): load_dimension_tables> on 2025-12-17 20:01:35.997449+00:00
+[2025-12-17T20:01:39.438+0000] {standard_task_runner.py:57} INFO - Started process 13102 to run task
+[2025-12-17T20:01:39.445+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toyota_load_dwh', 'load_dimension_tables', 'manual__2025-12-17T20:01:35.997449+00:00', '--job-id', '416', '--raw', '--subdir', 'DAGS_FOLDER/dag_dwh.py', '--cfg-path', '/tmp/tmp6lebi747']
+[2025-12-17T20:01:39.451+0000] {standard_task_runner.py:85} INFO - Job 416: Subtask load_dimension_tables
+[2025-12-17T20:01:39.556+0000] {task_command.py:415} INFO - Running <TaskInstance: toyota_load_dwh.load_dimension_tables manual__2025-12-17T20:01:35.997449+00:00 [running]> on host 2c3879603899
+[2025-12-17T20:01:39.686+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rifky' AIRFLOW_CTX_DAG_ID='toyota_load_dwh' AIRFLOW_CTX_TASK_ID='load_dimension_tables' AIRFLOW_CTX_EXECUTION_DATE='2025-12-17T20:01:35.997449+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-17T20:01:35.997449+00:00'
+[2025-12-17T20:01:39.688+0000] {logging_mixin.py:151} INFO - Loading dimension tables...
+[2025-12-17T20:01:39.690+0000] {logging_mixin.py:151} INFO - 📦 Loading dimension tables...
+[2025-12-17T20:01:39.992+0000] {logging_mixin.py:151} INFO -    🚗 Creating DimCar...
+[2025-12-17T20:01:44.178+0000] {logging_mixin.py:151} INFO -       ✅ DimCar: 39949 records
+[2025-12-17T20:01:44.180+0000] {logging_mixin.py:151} INFO -    📍 Creating DimLocation...
+[2025-12-17T20:01:44.229+0000] {logging_mixin.py:151} INFO -       ✅ DimLocation: 37 records
+[2025-12-17T20:01:44.230+0000] {logging_mixin.py:151} INFO -    👤 Creating DimCustomer...
+[2025-12-17T20:01:46.499+0000] {logging_mixin.py:151} INFO -       ✅ DimCustomer: 39966 records
+[2025-12-17T20:01:46.500+0000] {logging_mixin.py:151} INFO -    🏪 Creating DimSeller...
+[2025-12-17T20:01:46.877+0000] {logging_mixin.py:151} INFO -       ✅ DimSeller: 4150 records
+[2025-12-17T20:01:46.878+0000] {logging_mixin.py:151} INFO -    📅 Creating DimDate...
+[2025-12-17T20:01:47.041+0000] {logging_mixin.py:151} INFO -       ✅ DimDate: 1977 records
+[2025-12-17T20:01:47.042+0000] {logging_mixin.py:151} INFO - ✅ All dimension tables loaded successfully!
+[2025-12-17T20:01:47.047+0000] {python.py:194} INFO - Done. Returned value was: True
+[2025-12-17T20:01:47.103+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=toyota_load_dwh, task_id=load_dimension_tables, execution_date=20251217T200135, start_date=20251217T200139, end_date=20251217T200147
+[2025-12-17T20:01:47.223+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-12-17T20:01:47.267+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

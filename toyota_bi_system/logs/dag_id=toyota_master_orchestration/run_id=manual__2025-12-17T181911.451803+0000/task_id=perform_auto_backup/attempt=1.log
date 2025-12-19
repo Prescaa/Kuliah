@@ -1,0 +1,17 @@
+[2025-12-17T18:21:59.622+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toyota_master_orchestration.perform_auto_backup manual__2025-12-17T18:19:11.451803+00:00 [queued]>
+[2025-12-17T18:21:59.640+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toyota_master_orchestration.perform_auto_backup manual__2025-12-17T18:19:11.451803+00:00 [queued]>
+[2025-12-17T18:21:59.641+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-12-17T18:21:59.845+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): perform_auto_backup> on 2025-12-17 18:19:11.451803+00:00
+[2025-12-17T18:21:59.860+0000] {standard_task_runner.py:57} INFO - Started process 6608 to run task
+[2025-12-17T18:21:59.867+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toyota_master_orchestration', 'perform_auto_backup', 'manual__2025-12-17T18:19:11.451803+00:00', '--job-id', '409', '--raw', '--subdir', 'DAGS_FOLDER/dag_orchestrate.py', '--cfg-path', '/tmp/tmpxwr1dqr2']
+[2025-12-17T18:21:59.873+0000] {standard_task_runner.py:85} INFO - Job 409: Subtask perform_auto_backup
+[2025-12-17T18:21:59.983+0000] {task_command.py:415} INFO - Running <TaskInstance: toyota_master_orchestration.perform_auto_backup manual__2025-12-17T18:19:11.451803+00:00 [running]> on host 2c3879603899
+[2025-12-17T18:22:00.131+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rifky' AIRFLOW_CTX_DAG_ID='toyota_master_orchestration' AIRFLOW_CTX_TASK_ID='perform_auto_backup' AIRFLOW_CTX_EXECUTION_DATE='2025-12-17T18:19:11.451803+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-17T18:19:11.451803+00:00'
+[2025-12-17T18:22:00.136+0000] {logging_mixin.py:151} INFO - [BACKUP] Starting File-Level Backup...
+[2025-12-17T18:22:00.391+0000] {logging_mixin.py:151} INFO -    File Backup created: /opt/***/backups/BACKUP_Car_Sales_20251217_182200.csv
+[2025-12-17T18:22:00.392+0000] {logging_mixin.py:151} INFO - [BACKUP] Starting Database Snapshot...
+[2025-12-17T18:22:01.511+0000] {logging_mixin.py:151} INFO -    Database Snapshot created: /opt/***/backups/SNAPSHOT_FactSales_20251217_182200.csv (39972 records)
+[2025-12-17T18:22:01.512+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-12-17T18:22:01.528+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=toyota_master_orchestration, task_id=perform_auto_backup, execution_date=20251217T181911, start_date=20251217T182159, end_date=20251217T182201
+[2025-12-17T18:22:01.608+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-12-17T18:22:01.640+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

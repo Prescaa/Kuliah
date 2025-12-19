@@ -1,0 +1,23 @@
+[2025-12-19T00:00:17.881+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toyota_load_dwh.load_fact_tables scheduled__2025-12-18T00:00:00+00:00 [queued]>
+[2025-12-19T00:00:17.923+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toyota_load_dwh.load_fact_tables scheduled__2025-12-18T00:00:00+00:00 [queued]>
+[2025-12-19T00:00:17.925+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2025-12-19T00:00:18.204+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): load_fact_tables> on 2025-12-18 00:00:00+00:00
+[2025-12-19T00:00:18.225+0000] {standard_task_runner.py:57} INFO - Started process 6447 to run task
+[2025-12-19T00:00:18.233+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toyota_load_dwh', 'load_fact_tables', 'scheduled__2025-12-18T00:00:00+00:00', '--job-id', '464', '--raw', '--subdir', 'DAGS_FOLDER/dag_dwh.py', '--cfg-path', '/tmp/tmpvi71inj3']
+[2025-12-19T00:00:18.240+0000] {standard_task_runner.py:85} INFO - Job 464: Subtask load_fact_tables
+[2025-12-19T00:00:18.380+0000] {task_command.py:415} INFO - Running <TaskInstance: toyota_load_dwh.load_fact_tables scheduled__2025-12-18T00:00:00+00:00 [running]> on host 2c3879603899
+[2025-12-19T00:00:18.575+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rifky' AIRFLOW_CTX_DAG_ID='toyota_load_dwh' AIRFLOW_CTX_TASK_ID='load_fact_tables' AIRFLOW_CTX_EXECUTION_DATE='2025-12-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-18T00:00:00+00:00'
+[2025-12-19T00:00:18.578+0000] {logging_mixin.py:151} INFO - Loading fact tables...
+[2025-12-19T00:00:18.581+0000] {logging_mixin.py:151} INFO -  Loading fact tables...
+[2025-12-19T00:00:19.787+0000] {logging_mixin.py:151} INFO -     Creating FactSales...
+[2025-12-19T00:00:20.378+0000] {logging_mixin.py:151} INFO -        Warning dropping table: 'Connection' object has no attribute 'commit'
+[2025-12-19T00:00:24.650+0000] {logging_mixin.py:151} INFO -        FactSales: 39972 records
+[2025-12-19T00:00:24.654+0000] {logging_mixin.py:151} INFO -     Creating FactCustomerSummary...
+[2025-12-19T00:00:36.118+0000] {logging_mixin.py:151} INFO -        FactCustomerSummary: 39966 records
+[2025-12-19T00:00:36.122+0000] {logging_mixin.py:151} INFO -     Creating business views...
+[2025-12-19T00:00:36.125+0000] {logging_mixin.py:151} INFO -        Error creating views: 'Connection' object has no attribute 'commit'
+[2025-12-19T00:00:36.126+0000] {logging_mixin.py:151} INFO -  All fact tables loaded successfully!
+[2025-12-19T00:00:36.138+0000] {python.py:194} INFO - Done. Returned value was: True
+[2025-12-19T00:00:36.218+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=toyota_load_dwh, task_id=load_fact_tables, execution_date=20251218T000000, start_date=20251219T000017, end_date=20251219T000036
+[2025-12-19T00:00:36.324+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-12-19T00:00:36.367+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

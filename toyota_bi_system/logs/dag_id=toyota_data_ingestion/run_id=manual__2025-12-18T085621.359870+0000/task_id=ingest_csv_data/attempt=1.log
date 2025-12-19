@@ -1,0 +1,43 @@
+[2025-12-18T08:56:24.747+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toyota_data_ingestion.ingest_csv_data manual__2025-12-18T08:56:21.359870+00:00 [queued]>
+[2025-12-18T08:56:24.763+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toyota_data_ingestion.ingest_csv_data manual__2025-12-18T08:56:21.359870+00:00 [queued]>
+[2025-12-18T08:56:24.764+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-12-18T08:56:24.785+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): ingest_csv_data> on 2025-12-18 08:56:21.359870+00:00
+[2025-12-18T08:56:24.801+0000] {standard_task_runner.py:57} INFO - Started process 6713 to run task
+[2025-12-18T08:56:24.808+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toyota_data_ingestion', 'ingest_csv_data', 'manual__2025-12-18T08:56:21.359870+00:00', '--job-id', '429', '--raw', '--subdir', 'DAGS_FOLDER/dag_ingest.py', '--cfg-path', '/tmp/tmpeqkcwouh']
+[2025-12-18T08:56:24.814+0000] {standard_task_runner.py:85} INFO - Job 429: Subtask ingest_csv_data
+[2025-12-18T08:56:24.923+0000] {task_command.py:415} INFO - Running <TaskInstance: toyota_data_ingestion.ingest_csv_data manual__2025-12-18T08:56:21.359870+00:00 [running]> on host 2c3879603899
+[2025-12-18T08:56:25.063+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rifky' AIRFLOW_CTX_DAG_ID='toyota_data_ingestion' AIRFLOW_CTX_TASK_ID='ingest_csv_data' AIRFLOW_CTX_EXECUTION_DATE='2025-12-18T08:56:21.359870+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-18T08:56:21.359870+00:00'
+[2025-12-18T08:56:25.066+0000] {logging_mixin.py:151} INFO - Starting CSV ingestion...
+[2025-12-18T08:56:25.113+0000] {logging_mixin.py:151} INFO - [INFO] Connected to MinIO Data Lake at minio:9000
+[2025-12-18T08:56:25.113+0000] {logging_mixin.py:151} INFO - 🚀 Starting batch CSV ingestion...
+[2025-12-18T08:56:25.114+0000] {logging_mixin.py:151} INFO - 📥 Ingesting car_prices.csv from auctions...
+[2025-12-18T08:56:29.433+0000] {logging_mixin.py:151} INFO -    📊 Shape: (558837, 16), Columns: ['year', 'make', 'model', 'trim', 'body', 'transmission', 'vin', 'state', 'condition', 'odometer', 'color', 'interior', 'seller', 'mmr', 'sellingprice', 'saledate']
+[2025-12-18T08:56:29.722+0000] {logging_mixin.py:151} INFO -    📋 Quality report saved: quality_report_car_prices_20251218_085629.json
+[2025-12-18T08:56:30.462+0000] {logging_mixin.py:151} INFO - [UPLOAD] Uploaded to MinIO: raw-data/auctions/20251218_085629_car_prices.csv
+[2025-12-18T08:56:39.752+0000] {logging_mixin.py:151} INFO - ✅ Successfully ingested 558837 records
+[2025-12-18T08:56:39.753+0000] {logging_mixin.py:151} INFO - 📥 Ingesting fuel.csv from fuel_economy...
+[2025-12-18T08:56:40.413+0000] {logging_mixin.py:151} INFO -    📊 Shape: (38113, 81), Columns: ['vehicle_id', 'year', 'make', 'model', 'class', 'drive', 'transmission', 'transmission_type', 'engine_index', 'engine_descriptor', 'engine_cylinders', 'engine_displacement', 'turbocharger', 'supercharger', 'fuel_type', 'fuel_type_1', 'fuel_type_2', 'city_mpg_ft1', 'unrounded_city_mpg_ft1', 'city_mpg_ft2', 'unrounded_city_mpg_ft2', 'city_gasoline_consumption_cd', 'city_electricity_consumption', 'city_utility_factor', 'highway_mpg_ft1', 'unrounded_highway_mpg_ft1', 'highway_mpg_ft2', 'unrounded_highway_mpg_ft2', 'highway_gasoline_consumption_cd', 'highway_electricity_consumption', 'highway_utility_factor', 'unadjusted_city_mpg_ft1', 'unadjusted_highway_mpg_ft1', 'unadjusted_city_mpg_ft2', 'unadjusted_highway_mpg_ft2', 'combined_mpg_ft1', 'unrounded_combined_mpg_ft1', 'combined_mpg_ft2', 'unrounded_combined_mpg_ft2', 'combined_electricity_consumption', 'combined_gasoline_consumption_cd', 'combined_utility_factor', 'annual_fuel_cost_ft1', 'annual_fuel_cost_ft2', 'gas_guzzler_tax', 'save_or_spend_5_year', 'annual_consumption_in_barrels_ft1', 'annual_consumption_in_barrels_ft2', 'tailpipe_co2_ft1', 'tailpipe_co2_in_grams_mile_ft1', 'tailpipe_co2_ft2', 'tailpipe_co2_in_grams_mile_ft2', 'fuel_economy_score', 'ghg_score', 'ghg_score_alt_fuel', 'my_mpg_data', 'x2d_passenger_volume', 'x2d_luggage_volume', 'x4d_passenger_volume', 'x4d_luggage_volume', 'hatchback_passenger_volume', 'hatchback_luggage_volume', 'start_stop_technology', 'alternative_fuel_technology', 'electric_motor', 'manufacturer_code', 'gasoline_electricity_blended_cd', 'vehicle_charger', 'alternate_charger', 'hours_to_charge_120v', 'hours_to_charge_240v', 'hours_to_charge_ac_240v', 'composite_city_mpg', 'composite_highway_mpg', 'composite_combined_mpg', 'range_ft1', 'city_range_ft1', 'highway_range_ft1', 'range_ft2', 'city_range_ft2', 'highway_range_ft2']
+[2025-12-18T08:56:40.460+0000] {logging_mixin.py:151} INFO -    📋 Quality report saved: quality_report_fuel_20251218_085640.json
+[2025-12-18T08:56:40.612+0000] {logging_mixin.py:151} INFO - [UPLOAD] Uploaded to MinIO: raw-data/fuel_economy/20251218_085640_fuel.csv
+[2025-12-18T08:56:42.586+0000] {logging_mixin.py:151} INFO - ✅ Successfully ingested 38113 records
+[2025-12-18T08:56:42.641+0000] {logging_mixin.py:151} INFO - 📥 Ingesting uscities.csv from geography...
+[2025-12-18T08:56:42.854+0000] {logging_mixin.py:151} INFO -    📊 Shape: (28338, 17), Columns: ['city', 'city_ascii', 'state_id', 'state_name', 'county_fips', 'county_name', 'lat', 'lng', 'population', 'density', 'source', 'military', 'incorporated', 'timezone', 'ranking', 'zips', 'id']
+[2025-12-18T08:56:42.875+0000] {logging_mixin.py:151} INFO -    📋 Quality report saved: quality_report_uscities_20251218_085642.json
+[2025-12-18T08:56:42.972+0000] {logging_mixin.py:151} INFO - [UPLOAD] Uploaded to MinIO: raw-data/geography/20251218_085642_uscities.csv
+[2025-12-18T08:56:43.393+0000] {logging_mixin.py:151} INFO - ✅ Successfully ingested 28338 records
+[2025-12-18T08:56:43.396+0000] {logging_mixin.py:151} INFO - 📥 Ingesting cpi_raw.csv from inflation...
+[2025-12-18T08:56:43.428+0000] {logging_mixin.py:151} INFO -    📊 Shape: (10, 1), Columns: ['Consumer Price Index for All Urban Consumers (CPI-U);;;;;;;;;;;;;;']
+[2025-12-18T08:56:43.466+0000] {logging_mixin.py:151} INFO -    📋 Quality report saved: quality_report_cpi_raw_20251218_085643.json
+[2025-12-18T08:56:43.483+0000] {logging_mixin.py:151} INFO - [UPLOAD] Uploaded to MinIO: raw-data/inflation/20251218_085643_cpi_raw.csv
+[2025-12-18T08:56:43.512+0000] {logging_mixin.py:151} INFO - ✅ Successfully ingested 10 records
+[2025-12-18T08:56:43.514+0000] {logging_mixin.py:151} INFO - 
+📈 INGESTION SUMMARY:
+[2025-12-18T08:56:43.515+0000] {logging_mixin.py:151} INFO - ----------------------------------------
+[2025-12-18T08:56:43.516+0000] {logging_mixin.py:151} INFO - car_prices.csv: 558837 rows, 16 cols (auctions)
+[2025-12-18T08:56:43.517+0000] {logging_mixin.py:151} INFO - fuel.csv: 38113 rows, 81 cols (fuel_economy)
+[2025-12-18T08:56:43.517+0000] {logging_mixin.py:151} INFO - uscities.csv: 28338 rows, 17 cols (geography)
+[2025-12-18T08:56:43.518+0000] {logging_mixin.py:151} INFO - cpi_raw.csv: 10 rows, 1 cols (inflation)
+[2025-12-18T08:56:43.519+0000] {python.py:194} INFO - Done. Returned value was: {'car_prices.csv': {'rows': 558837, 'columns': 16, 'data_source': 'auctions'}, 'fuel.csv': {'rows': 38113, 'columns': 81, 'data_source': 'fuel_economy'}, 'uscities.csv': {'rows': 28338, 'columns': 17, 'data_source': 'geography'}, 'cpi_raw.csv': {'rows': 10, 'columns': 1, 'data_source': 'inflation'}}
+[2025-12-18T08:56:43.563+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=toyota_data_ingestion, task_id=ingest_csv_data, execution_date=20251218T085621, start_date=20251218T085624, end_date=20251218T085643
+[2025-12-18T08:56:43.646+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-12-18T08:56:43.680+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

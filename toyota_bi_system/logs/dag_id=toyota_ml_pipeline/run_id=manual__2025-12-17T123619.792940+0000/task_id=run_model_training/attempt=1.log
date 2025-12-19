@@ -1,0 +1,78 @@
+[2025-12-17T12:36:27.825+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toyota_ml_pipeline.run_model_training manual__2025-12-17T12:36:19.792940+00:00 [queued]>
+[2025-12-17T12:36:27.839+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toyota_ml_pipeline.run_model_training manual__2025-12-17T12:36:19.792940+00:00 [queued]>
+[2025-12-17T12:36:27.840+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-12-17T12:36:27.860+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): run_model_training> on 2025-12-17 12:36:19.792940+00:00
+[2025-12-17T12:36:27.872+0000] {standard_task_runner.py:57} INFO - Started process 442 to run task
+[2025-12-17T12:36:27.878+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toyota_ml_pipeline', 'run_model_training', 'manual__2025-12-17T12:36:19.792940+00:00', '--job-id', '395', '--raw', '--subdir', 'DAGS_FOLDER/dag_ml.py', '--cfg-path', '/tmp/tmp9ot9gg85']
+[2025-12-17T12:36:27.883+0000] {standard_task_runner.py:85} INFO - Job 395: Subtask run_model_training
+[2025-12-17T12:36:28.006+0000] {task_command.py:415} INFO - Running <TaskInstance: toyota_ml_pipeline.run_model_training manual__2025-12-17T12:36:19.792940+00:00 [running]> on host 2c3879603899
+[2025-12-17T12:36:28.159+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rifky' AIRFLOW_CTX_DAG_ID='toyota_ml_pipeline' AIRFLOW_CTX_TASK_ID='run_model_training' AIRFLOW_CTX_EXECUTION_DATE='2025-12-17T12:36:19.792940+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-17T12:36:19.792940+00:00'
+[2025-12-17T12:36:28.162+0000] {logging_mixin.py:151} INFO - Starting model training...
+[2025-12-17T12:36:30.810+0000] {font_manager.py:1547} INFO - generated new fontManager
+[2025-12-17T12:36:31.742+0000] {logging_mixin.py:151} INFO - 
+============================================================
+[2025-12-17T12:36:31.743+0000] {logging_mixin.py:151} INFO - [INFO] STARTING MODEL TRAINING PIPELINE
+[2025-12-17T12:36:31.744+0000] {logging_mixin.py:151} INFO - ============================================================
+[2025-12-17T12:36:31.744+0000] {logging_mixin.py:151} INFO - 
+[PHASE 1] Loading Cached Data
+[2025-12-17T12:36:31.798+0000] {logging_mixin.py:151} INFO -    -> Data loaded successfully from disk
+[2025-12-17T12:36:31.799+0000] {logging_mixin.py:151} INFO - 
+[PHASE 2] Model Training
+[2025-12-17T12:36:31.800+0000] {logging_mixin.py:151} INFO -    -> Training Random Forest model...
+[2025-12-17T12:36:32.400+0000] {logging_mixin.py:151} INFO -    -> Model trained successfully with 100 trees
+[2025-12-17T12:36:32.402+0000] {logging_mixin.py:151} INFO - 
+[PHASE 3] Model Evaluation
+[2025-12-17T12:36:32.402+0000] {logging_mixin.py:151} INFO -    -> Evaluating model performance...
+[2025-12-17T12:36:33.701+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/sklearn/ensemble/_base.py:214 UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+[2025-12-17T12:36:33.719+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/joblib/parallel.py:1359 UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+[2025-12-17T12:36:34.131+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/sklearn/ensemble/_base.py:214 UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+[2025-12-17T12:36:34.582+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/sklearn/ensemble/_base.py:214 UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+[2025-12-17T12:36:35.009+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/sklearn/ensemble/_base.py:214 UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+[2025-12-17T12:36:35.410+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/sklearn/ensemble/_base.py:214 UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+[2025-12-17T12:36:35.823+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/sklearn/ensemble/_base.py:214 UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+[2025-12-17T12:36:35.835+0000] {logging_mixin.py:151} INFO - 
+----------------------------------------
+[2025-12-17T12:36:35.836+0000] {logging_mixin.py:151} INFO - MODEL PERFORMANCE METRICS
+[2025-12-17T12:36:35.836+0000] {logging_mixin.py:151} INFO - ----------------------------------------
+[2025-12-17T12:36:35.837+0000] {logging_mixin.py:151} INFO - R2 Score (Accuracy):   86.77%
+[2025-12-17T12:36:35.837+0000] {logging_mixin.py:151} INFO - Cross-Val Accuracy:    66.09% (+/- 9.89%)
+[2025-12-17T12:36:35.838+0000] {logging_mixin.py:151} INFO - MAE (Mean Abs Error):  $1,674
+[2025-12-17T12:36:35.838+0000] {logging_mixin.py:151} INFO - RMSE (Root Mean Sq):   $2,579
+[2025-12-17T12:36:35.839+0000] {logging_mixin.py:151} INFO - ----------------------------------------
+[2025-12-17T12:36:35.840+0000] {logging_mixin.py:151} INFO -    -> Extracting Feature Importance...
+[2025-12-17T12:36:35.876+0000] {logging_mixin.py:151} INFO - 
+   Top 10 Most Important Features:
+[2025-12-17T12:36:35.877+0000] {logging_mixin.py:151} INFO -       - VehicleAge          : 0.2186
+[2025-12-17T12:36:35.878+0000] {logging_mixin.py:151} INFO -       - ComplaintCount      : 0.1852
+[2025-12-17T12:36:35.879+0000] {logging_mixin.py:151} INFO -       - CarYear             : 0.1792
+[2025-12-17T12:36:35.880+0000] {logging_mixin.py:151} INFO -       - Odometer            : 0.1687
+[2025-12-17T12:36:35.880+0000] {logging_mixin.py:151} INFO -       - CarModel_Code       : 0.0759
+[2025-12-17T12:36:35.881+0000] {logging_mixin.py:151} INFO -       - CityMPG             : 0.0435
+[2025-12-17T12:36:35.882+0000] {logging_mixin.py:151} INFO -       - AvgMPG              : 0.0366
+[2025-12-17T12:36:35.882+0000] {logging_mixin.py:151} INFO -       - Condition           : 0.0271
+[2025-12-17T12:36:35.883+0000] {logging_mixin.py:151} INFO -       - Price_vs_MMR_Ratio  : 0.0221
+[2025-12-17T12:36:35.884+0000] {logging_mixin.py:151} INFO -       - MilesPerYear        : 0.0165
+[2025-12-17T12:36:35.996+0000] {logging_mixin.py:151} INFO -    -> Model artifact saved to: /opt/***/ml/models/random_forest/model.pkl
+[2025-12-17T12:36:35.999+0000] {logging_mixin.py:151} INFO -    -> Creating performance visualizations...
+[2025-12-17T12:36:38.046+0000] {logging_mixin.py:151} INFO -    -> Visualizations saved to: /opt/***/ml/models/visualizations
+[2025-12-17T12:36:38.047+0000] {logging_mixin.py:151} INFO - 
+[PHASE 4] BI Data Generation & Forecasting
+[2025-12-17T12:36:38.053+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/sklearn/ensemble/_base.py:214 UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+[2025-12-17T12:36:38.082+0000] {logging_mixin.py:151} INFO -    -> Running Forecast Simulation (1 & 3 Years later)...
+[2025-12-17T12:36:38.090+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/sklearn/ensemble/_base.py:214 UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+[2025-12-17T12:36:38.116+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/sklearn/ensemble/_base.py:214 UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+[2025-12-17T12:36:38.144+0000] {logging_mixin.py:151} INFO -    -> Formatting numeric precision...
+[2025-12-17T12:36:38.209+0000] {logging_mixin.py:151} INFO -    -> Saved to Dashboard: /opt/***/dashboard/model_results_for_bi.csv
+[2025-12-17T12:36:38.294+0000] {logging_mixin.py:151} INFO -    -> Saved to Data backup: /opt/***/data/model_results_for_bi.csv
+[2025-12-17T12:36:38.340+0000] {logging_mixin.py:151} INFO -    -> Uploading Final BI Data to MinIO (Data Lake)...
+[2025-12-17T12:36:38.358+0000] {logging_mixin.py:151} INFO - [INFO] Connected to MinIO Data Lake at minio:9000
+[2025-12-17T12:36:38.411+0000] {logging_mixin.py:151} INFO - [PROCESSED] Saved to Data Lake: processed-data/20251217_123638_model_results_bi.csv
+[2025-12-17T12:36:38.413+0000] {logging_mixin.py:151} INFO - 
+============================================================
+[2025-12-17T12:36:38.413+0000] {logging_mixin.py:151} INFO - [SUCCESS] TRAINING PIPELINE COMPLETE
+[2025-12-17T12:36:38.414+0000] {logging_mixin.py:151} INFO - Final Model Accuracy (R2): 86.77%
+[2025-12-17T12:36:38.415+0000] {logging_mixin.py:151} INFO - ============================================================
+[2025-12-17T12:36:38.416+0000] {python.py:194} INFO - Done. Returned value was: Training Complete
+[2025-12-17T12:36:38.472+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=toyota_ml_pipeline, task_id=run_model_training, execution_date=20251217T123619, start_date=20251217T123627, end_date=20251217T123638
+[2025-12-17T12:36:38.611+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-12-17T12:36:38.643+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

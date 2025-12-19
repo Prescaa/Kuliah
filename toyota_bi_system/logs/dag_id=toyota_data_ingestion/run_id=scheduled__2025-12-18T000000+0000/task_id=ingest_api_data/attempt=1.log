@@ -1,0 +1,23 @@
+[2025-12-19T00:00:06.153+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toyota_data_ingestion.ingest_api_data scheduled__2025-12-18T00:00:00+00:00 [queued]>
+[2025-12-19T00:00:06.170+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toyota_data_ingestion.ingest_api_data scheduled__2025-12-18T00:00:00+00:00 [queued]>
+[2025-12-19T00:00:06.170+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-12-19T00:00:06.209+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): ingest_api_data> on 2025-12-18 00:00:00+00:00
+[2025-12-19T00:00:06.237+0000] {standard_task_runner.py:57} INFO - Started process 6407 to run task
+[2025-12-19T00:00:06.246+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toyota_data_ingestion', 'ingest_api_data', 'scheduled__2025-12-18T00:00:00+00:00', '--job-id', '462', '--raw', '--subdir', 'DAGS_FOLDER/dag_ingest.py', '--cfg-path', '/tmp/tmp67pmqyg3']
+[2025-12-19T00:00:06.259+0000] {standard_task_runner.py:85} INFO - Job 462: Subtask ingest_api_data
+[2025-12-19T00:00:06.409+0000] {task_command.py:415} INFO - Running <TaskInstance: toyota_data_ingestion.ingest_api_data scheduled__2025-12-18T00:00:00+00:00 [running]> on host 2c3879603899
+[2025-12-19T00:00:06.721+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rifky' AIRFLOW_CTX_DAG_ID='toyota_data_ingestion' AIRFLOW_CTX_TASK_ID='ingest_api_data' AIRFLOW_CTX_EXECUTION_DATE='2025-12-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-18T00:00:00+00:00'
+[2025-12-19T00:00:06.726+0000] {logging_mixin.py:151} INFO - Starting API ingestion...
+[2025-12-19T00:00:06.845+0000] {logging_mixin.py:151} INFO - [INFO] Connected to MinIO Data Lake at minio:9000
+[2025-12-19T00:00:06.876+0000] {logging_mixin.py:151} INFO - 📋 Processing 5 vehicles...
+[2025-12-19T00:00:06.889+0000] {logging_mixin.py:151} INFO - 🎭 Using mock data for Toyota CAMRY 2020
+[2025-12-19T00:00:06.891+0000] {logging_mixin.py:151} INFO - 🎭 Using mock data for Toyota COROLLA 2021
+[2025-12-19T00:00:06.893+0000] {logging_mixin.py:151} INFO - 🎭 Using mock data for Toyota RAV4 2022
+[2025-12-19T00:00:06.894+0000] {logging_mixin.py:151} INFO - 🎭 Using mock data for Toyota HIGHLANDER 2021
+[2025-12-19T00:00:06.895+0000] {logging_mixin.py:151} INFO - 🎭 Using mock data for Toyota TACOMA 2020
+[2025-12-19T00:00:06.975+0000] {logging_mixin.py:151} INFO - [STAGING] Saved to staging: nhtsa/20251219_000006_complaints_20251219.csv
+[2025-12-19T00:00:06.976+0000] {logging_mixin.py:151} INFO - ✅ Saved 5 complaint records
+[2025-12-19T00:00:06.978+0000] {python.py:194} INFO - Done. Returned value was: True
+[2025-12-19T00:00:07.033+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=toyota_data_ingestion, task_id=ingest_api_data, execution_date=20251218T000000, start_date=20251219T000006, end_date=20251219T000007
+[2025-12-19T00:00:07.106+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-12-19T00:00:07.159+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

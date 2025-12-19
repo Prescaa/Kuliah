@@ -1,0 +1,76 @@
+[2025-12-18T22:30:59.742+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toyota_ml_pipeline.run_feature_engineering manual__2025-12-18T22:30:56.088965+00:00 [queued]>
+[2025-12-18T22:30:59.762+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toyota_ml_pipeline.run_feature_engineering manual__2025-12-18T22:30:56.088965+00:00 [queued]>
+[2025-12-18T22:30:59.763+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-12-18T22:30:59.791+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): run_feature_engineering> on 2025-12-18 22:30:56.088965+00:00
+[2025-12-18T22:30:59.804+0000] {standard_task_runner.py:57} INFO - Started process 424 to run task
+[2025-12-18T22:30:59.810+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toyota_ml_pipeline', 'run_feature_engineering', 'manual__2025-12-18T22:30:56.088965+00:00', '--job-id', '457', '--raw', '--subdir', 'DAGS_FOLDER/dag_ml.py', '--cfg-path', '/tmp/tmpxr5mw7dw']
+[2025-12-18T22:30:59.815+0000] {standard_task_runner.py:85} INFO - Job 457: Subtask run_feature_engineering
+[2025-12-18T22:30:59.957+0000] {task_command.py:415} INFO - Running <TaskInstance: toyota_ml_pipeline.run_feature_engineering manual__2025-12-18T22:30:56.088965+00:00 [running]> on host 2c3879603899
+[2025-12-18T22:31:00.111+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rifky' AIRFLOW_CTX_DAG_ID='toyota_ml_pipeline' AIRFLOW_CTX_TASK_ID='run_feature_engineering' AIRFLOW_CTX_EXECUTION_DATE='2025-12-18T22:30:56.088965+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-18T22:30:56.088965+00:00'
+[2025-12-18T22:31:00.114+0000] {logging_mixin.py:151} INFO - Starting feature engineering...
+[2025-12-18T22:31:02.643+0000] {logging_mixin.py:151} INFO - 
+============================================================
+[2025-12-18T22:31:02.644+0000] {logging_mixin.py:151} INFO - [INFO] STARTING FEATURE ENGINEERING PIPELINE
+[2025-12-18T22:31:02.645+0000] {logging_mixin.py:151} INFO - ============================================================
+[2025-12-18T22:31:02.646+0000] {logging_mixin.py:151} INFO - 
+[PHASE 1] Data Loading
+[2025-12-18T22:31:02.646+0000] {logging_mixin.py:151} INFO -    -> Connecting to Data Warehouse...
+[2025-12-18T22:31:02.680+0000] {logging_mixin.py:151} INFO -    [ERROR] Error loading from DW: (psycopg2.errors.UndefinedTable) relation "fact_sales" does not exist
+LINE 7:             FROM fact_sales
+                         ^
+
+[SQL: 
+            SELECT 
+                "CarMake", "CarModel", "CarYear", "Odometer", "Condition",
+                "CityMPG", "HighwayMPG", "InflationRate", "ComplaintCount", 
+                "OriginCountry", "FuelType", "State",
+                "SalePrice", "MarketPrice_MMR"
+            FROM fact_sales
+            ]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2025-12-18T22:31:02.684+0000] {logging_mixin.py:151} INFO -    [WARN] Falling back to CSV: /opt/***/data/processed/Car_Sales_Toyota_USA.csv
+[2025-12-18T22:31:03.016+0000] {logging_mixin.py:151} INFO - 
+[PHASE 2] Feature Engineering & Cleaning
+[2025-12-18T22:31:03.017+0000] {logging_mixin.py:151} INFO -    -> Performing Representative Sampling (Target: 1000)...
+[2025-12-18T22:31:03.461+0000] {logging_mixin.py:151} INFO -    -> Data reduced to 1000 rows (Stratified Sample)
+[2025-12-18T22:31:03.465+0000] {logging_mixin.py:151} INFO -    -> Imputing missing MPG using Car Model averages...
+[2025-12-18T22:31:03.494+0000] {logging_mixin.py:151} INFO -    -> Created 16 engineered features
+[2025-12-18T22:31:03.495+0000] {logging_mixin.py:151} INFO - 
+######################################################################
+[2025-12-18T22:31:03.496+0000] {logging_mixin.py:151} INFO - >>> QA AUDIT LOGS: DATA HEALTH CHECK
+[2025-12-18T22:31:03.497+0000] {logging_mixin.py:151} INFO - ######################################################################
+[2025-12-18T22:31:03.498+0000] {logging_mixin.py:151} INFO - 
+[*] CHECK 1: DATA INTEGRITY (NULL VALUES)
+[2025-12-18T22:31:03.501+0000] {logging_mixin.py:151} INFO -     [OK] Total Rows with Nulls : 0
+[2025-12-18T22:31:03.502+0000] {logging_mixin.py:151} INFO - 
+[*] CHECK 2: ANOMALY DETECTION (IQR METHOD)
+[2025-12-18T22:31:03.503+0000] {logging_mixin.py:151} INFO -     > Target Variable : SalePrice
+[2025-12-18T22:31:03.507+0000] {logging_mixin.py:151} INFO -     > Thresholds      : Low [-10,050] | High [30,350]
+[2025-12-18T22:31:03.508+0000] {logging_mixin.py:151} INFO -     > Flagged Records : 21 (2.10%)
+[2025-12-18T22:31:03.509+0000] {logging_mixin.py:151} INFO -     > Top Deviations  :
+[2025-12-18T22:31:03.512+0000] {logging_mixin.py:151} INFO -       1. ID:495  | LAND CRUISER '14 | Val: 60,100
+[2025-12-18T22:31:03.514+0000] {logging_mixin.py:151} INFO -       2. ID:447  | LAND CRUISER '11 | Val: 48,000
+[2025-12-18T22:31:03.515+0000] {logging_mixin.py:151} INFO -       3. ID:501  | LAND CRUISER '13 | Val: 45,500
+[2025-12-18T22:31:03.516+0000] {logging_mixin.py:151} INFO -     > Action          : RETAIN (Algorithm Robustness)
+[2025-12-18T22:31:03.517+0000] {logging_mixin.py:151} INFO - 
+[*] CHECK 3: DISTRIBUTION STABILITY (KS-TEST)
+[2025-12-18T22:31:03.521+0000] {logging_mixin.py:151} INFO -     > P-Value         : 0.0348 (Alpha: 0.05)
+[2025-12-18T22:31:03.522+0000] {logging_mixin.py:151} INFO -     > Conclusion      : [!!] DRIFT DETECTED
+[2025-12-18T22:31:03.523+0000] {logging_mixin.py:151} INFO - 
+######################################################################
+[2025-12-18T22:31:03.524+0000] {logging_mixin.py:151} INFO - [PHASE 3] Preprocessing
+[2025-12-18T22:31:03.524+0000] {logging_mixin.py:151} INFO -    -> Splitting data (Train: 80% / Test: 20%)...
+[2025-12-18T22:31:03.529+0000] {logging_mixin.py:151} INFO -    -> Scaling numerical features (StandardScaler)...
+[2025-12-18T22:31:03.557+0000] {logging_mixin.py:151} INFO -    -> Preparing Full Dataset for BI Output...
+[2025-12-18T22:31:03.569+0000] {logging_mixin.py:151} INFO - 
+[PHASE 4] Caching Artifacts
+[2025-12-18T22:31:03.784+0000] {logging_mixin.py:151} INFO -    -> Preprocessing objects saved to /opt/***/ml/models/preprocessing
+[2025-12-18T22:31:04.001+0000] {logging_mixin.py:151} INFO -    -> Data cached to: /opt/***/data/processed/ml_cache
+[2025-12-18T22:31:04.003+0000] {logging_mixin.py:151} INFO - 
+============================================================
+[2025-12-18T22:31:04.003+0000] {logging_mixin.py:151} INFO - [SUCCESS] FEATURE ENGINEERING COMPLETE
+[2025-12-18T22:31:04.004+0000] {logging_mixin.py:151} INFO - ============================================================
+[2025-12-18T22:31:04.012+0000] {python.py:194} INFO - Done. Returned value was: Done
+[2025-12-18T22:31:04.057+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=toyota_ml_pipeline, task_id=run_feature_engineering, execution_date=20251218T223056, start_date=20251218T223059, end_date=20251218T223104
+[2025-12-18T22:31:04.165+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-12-18T22:31:04.223+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

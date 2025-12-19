@@ -1,0 +1,50 @@
+[2025-12-17T20:01:06.494+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toyota_etl_transform.run_etl_transformation manual__2025-12-17T20:01:03.133642+00:00 [queued]>
+[2025-12-17T20:01:06.510+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toyota_etl_transform.run_etl_transformation manual__2025-12-17T20:01:03.133642+00:00 [queued]>
+[2025-12-17T20:01:06.511+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-12-17T20:01:06.534+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): run_etl_transformation> on 2025-12-17 20:01:03.133642+00:00
+[2025-12-17T20:01:06.549+0000] {standard_task_runner.py:57} INFO - Started process 13051 to run task
+[2025-12-17T20:01:06.556+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toyota_etl_transform', 'run_etl_transformation', 'manual__2025-12-17T20:01:03.133642+00:00', '--job-id', '414', '--raw', '--subdir', 'DAGS_FOLDER/dag_transform.py', '--cfg-path', '/tmp/tmpy4nsvs29']
+[2025-12-17T20:01:06.561+0000] {standard_task_runner.py:85} INFO - Job 414: Subtask run_etl_transformation
+[2025-12-17T20:01:06.695+0000] {task_command.py:415} INFO - Running <TaskInstance: toyota_etl_transform.run_etl_transformation manual__2025-12-17T20:01:03.133642+00:00 [running]> on host 2c3879603899
+[2025-12-17T20:01:06.844+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rifky' AIRFLOW_CTX_DAG_ID='toyota_etl_transform' AIRFLOW_CTX_TASK_ID='run_etl_transformation' AIRFLOW_CTX_EXECUTION_DATE='2025-12-17T20:01:03.133642+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-17T20:01:03.133642+00:00'
+[2025-12-17T20:01:06.847+0000] {logging_mixin.py:151} INFO - Starting ETL transformation...
+[2025-12-17T20:01:06.867+0000] {logging_mixin.py:151} INFO - [INFO] Connected to MinIO Data Lake at minio:9000
+[2025-12-17T20:01:06.868+0000] {logging_mixin.py:151} INFO - 
+============================================================
+[2025-12-17T20:01:06.868+0000] {logging_mixin.py:151} INFO - [INFO] STARTING ETL TRANSFORMATION PIPELINE
+[2025-12-17T20:01:06.869+0000] {logging_mixin.py:151} INFO - ============================================================
+[2025-12-17T20:01:06.869+0000] {logging_mixin.py:151} INFO - 
+[PHASE 1] Loading Data Sources...
+[2025-12-17T20:01:11.986+0000] {logging_mixin.py:151} INFO -    -> Loaded 39,966 Toyota sales records
+[2025-12-17T20:01:12.837+0000] {logging_mixin.py:151} INFO -    -> Loaded 38,113 fuel economy records
+[2025-12-17T20:01:12.991+0000] {logging_mixin.py:151} INFO -    -> Loaded 28,338 geographic records
+[2025-12-17T20:01:13.005+0000] {logging_mixin.py:151} INFO -    -> Loaded 16 inflation records
+[2025-12-17T20:01:13.006+0000] {logging_mixin.py:151} INFO - 
+[PHASE 2] Cleaning & Transforming Sales Data...
+[2025-12-17T20:01:13.635+0000] {logging_mixin.py:151} INFO -    -> Sales data cleaned & standardized
+[2025-12-17T20:01:13.701+0000] {logging_mixin.py:151} INFO -    -> Origin country derived from VIN
+[2025-12-17T20:01:13.702+0000] {logging_mixin.py:151} INFO - 
+[PHASE 3] API Enrichment (NHTSA Safety Data)...
+[2025-12-17T20:01:13.711+0000] {logging_mixin.py:151} INFO -    -> Loaded 321 records from local cache.
+[2025-12-17T20:01:13.761+0000] {logging_mixin.py:151} INFO -    -> Fetching 13 new configurations from API...
+[2025-12-17T20:01:18.011+0000] {logging_mixin.py:151} INFO -       [10/13] Processed: Toyota_LAND CRUISER_2014 -> 0 complaints
+[2025-12-17T20:01:18.835+0000] {logging_mixin.py:151} INFO -       [13/13] Processed: Toyota_LAND CRUISER_2007 -> 0 complaints
+[2025-12-17T20:01:18.846+0000] {logging_mixin.py:151} INFO -    -> Cache updated successfully.
+[2025-12-17T20:01:19.465+0000] {logging_mixin.py:151} INFO - 
+[PHASE 4] Merging Datasets & Finalizing...
+[2025-12-17T20:01:19.602+0000] {logging_mixin.py:151} INFO -    -> All datasets merged successfully
+[2025-12-17T20:01:19.648+0000] {logging_mixin.py:151} INFO -    -> Business metrics & synthetic customers added
+[2025-12-17T20:01:19.649+0000] {logging_mixin.py:151} INFO - 
+[PHASE 5] Saving Results...
+[2025-12-17T20:01:22.174+0000] {logging_mixin.py:151} INFO - [STAGING] Saved to staging: transform/20251217_200121_toyota_sales_transformed.csv
+[2025-12-17T20:01:23.158+0000] {logging_mixin.py:151} INFO - [PROCESSED] Saved to Data Lake: processed-data/20251217_200122_toyota_sales_final.csv
+[2025-12-17T20:01:23.159+0000] {logging_mixin.py:151} INFO -    -> Local Output: /opt/***/data/processed/Car_Sales_Toyota_USA.csv
+[2025-12-17T20:01:23.159+0000] {logging_mixin.py:151} INFO -    -> Record Count: 39,966 rows
+[2025-12-17T20:01:23.164+0000] {logging_mixin.py:151} INFO - 
+============================================================
+[2025-12-17T20:01:23.165+0000] {logging_mixin.py:151} INFO - [SUCCESS]  ETL Transformation Complete!
+[2025-12-17T20:01:23.166+0000] {logging_mixin.py:151} INFO - ============================================================
+[2025-12-17T20:01:23.223+0000] {python.py:194} INFO - Done. Returned value was: True
+[2025-12-17T20:01:23.283+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=toyota_etl_transform, task_id=run_etl_transformation, execution_date=20251217T200103, start_date=20251217T200106, end_date=20251217T200123
+[2025-12-17T20:01:23.354+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-12-17T20:01:23.412+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

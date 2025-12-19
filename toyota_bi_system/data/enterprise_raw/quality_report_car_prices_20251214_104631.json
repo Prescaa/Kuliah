@@ -1,0 +1,78 @@
+{
+  "file_name": "car_prices.csv",
+  "timestamp": "2025-12-14T10:46:30.901686",
+  "row_count": 558837,
+  "column_count": 16,
+  "missing_values": {
+    "make": {
+      "count": 10301,
+      "percentage": 1.84
+    },
+    "model": {
+      "count": 10399,
+      "percentage": 1.86
+    },
+    "trim": {
+      "count": 10651,
+      "percentage": 1.91
+    },
+    "body": {
+      "count": 13195,
+      "percentage": 2.36
+    },
+    "transmission": {
+      "count": 65352,
+      "percentage": 11.69
+    },
+    "vin": {
+      "count": 4,
+      "percentage": 0.0
+    },
+    "condition": {
+      "count": 11820,
+      "percentage": 2.12
+    },
+    "odometer": {
+      "count": 94,
+      "percentage": 0.02
+    },
+    "color": {
+      "count": 749,
+      "percentage": 0.13
+    },
+    "interior": {
+      "count": 749,
+      "percentage": 0.13
+    },
+    "mmr": {
+      "count": 38,
+      "percentage": 0.01
+    },
+    "sellingprice": {
+      "count": 12,
+      "percentage": 0.0
+    },
+    "saledate": {
+      "count": 12,
+      "percentage": 0.0
+    }
+  },
+  "column_types": {
+    "year": "int64",
+    "make": "object",
+    "model": "object",
+    "trim": "object",
+    "body": "object",
+    "transmission": "object",
+    "vin": "object",
+    "state": "object",
+    "condition": "float64",
+    "odometer": "float64",
+    "color": "object",
+    "interior": "object",
+    "seller": "object",
+    "mmr": "float64",
+    "sellingprice": "float64",
+    "saledate": "object"
+  }
+}

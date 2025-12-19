@@ -1,0 +1,159 @@
+{
+  "file_name": "fuel.csv",
+  "timestamp": "2025-12-17T18:19:40.091555",
+  "row_count": 38113,
+  "column_count": 81,
+  "missing_values": {
+    "drive": {
+      "count": 1189,
+      "percentage": 3.12
+    },
+    "transmission": {
+      "count": 11,
+      "percentage": 0.03
+    },
+    "transmission_type": {
+      "count": 23068,
+      "percentage": 60.53
+    },
+    "engine_descriptor": {
+      "count": 15420,
+      "percentage": 40.46
+    },
+    "engine_cylinders": {
+      "count": 136,
+      "percentage": 0.36
+    },
+    "engine_displacement": {
+      "count": 134,
+      "percentage": 0.35
+    },
+    "turbocharger": {
+      "count": 32874,
+      "percentage": 86.25
+    },
+    "supercharger": {
+      "count": 38113,
+      "percentage": 100.0
+    },
+    "fuel_type_2": {
+      "count": 38113,
+      "percentage": 100.0
+    },
+    "gas_guzzler_tax": {
+      "count": 37149,
+      "percentage": 97.47
+    },
+    "start_stop_technology": {
+      "count": 38113,
+      "percentage": 100.0
+    },
+    "alternative_fuel_technology": {
+      "count": 35066,
+      "percentage": 92.01
+    },
+    "electric_motor": {
+      "count": 38113,
+      "percentage": 100.0
+    },
+    "manufacturer_code": {
+      "count": 38113,
+      "percentage": 100.0
+    },
+    "vehicle_charger": {
+      "count": 38113,
+      "percentage": 100.0
+    },
+    "alternate_charger": {
+      "count": 38113,
+      "percentage": 100.0
+    },
+    "range_ft2": {
+      "count": 38113,
+      "percentage": 100.0
+    }
+  },
+  "column_types": {
+    "vehicle_id": "int64",
+    "year": "int64",
+    "make": "object",
+    "model": "object",
+    "class": "object",
+    "drive": "object",
+    "transmission": "object",
+    "transmission_type": "object",
+    "engine_index": "int64",
+    "engine_descriptor": "object",
+    "engine_cylinders": "float64",
+    "engine_displacement": "float64",
+    "turbocharger": "object",
+    "supercharger": "float64",
+    "fuel_type": "object",
+    "fuel_type_1": "object",
+    "fuel_type_2": "float64",
+    "city_mpg_ft1": "int64",
+    "unrounded_city_mpg_ft1": "float64",
+    "city_mpg_ft2": "int64",
+    "unrounded_city_mpg_ft2": "float64",
+    "city_gasoline_consumption_cd": "float64",
+    "city_electricity_consumption": "float64",
+    "city_utility_factor": "float64",
+    "highway_mpg_ft1": "int64",
+    "unrounded_highway_mpg_ft1": "float64",
+    "highway_mpg_ft2": "int64",
+    "unrounded_highway_mpg_ft2": "float64",
+    "highway_gasoline_consumption_cd": "float64",
+    "highway_electricity_consumption": "float64",
+    "highway_utility_factor": "float64",
+    "unadjusted_city_mpg_ft1": "float64",
+    "unadjusted_highway_mpg_ft1": "float64",
+    "unadjusted_city_mpg_ft2": "float64",
+    "unadjusted_highway_mpg_ft2": "float64",
+    "combined_mpg_ft1": "int64",
+    "unrounded_combined_mpg_ft1": "float64",
+    "combined_mpg_ft2": "int64",
+    "unrounded_combined_mpg_ft2": "float64",
+    "combined_electricity_consumption": "float64",
+    "combined_gasoline_consumption_cd": "float64",
+    "combined_utility_factor": "float64",
+    "annual_fuel_cost_ft1": "int64",
+    "annual_fuel_cost_ft2": "int64",
+    "gas_guzzler_tax": "object",
+    "save_or_spend_5_year": "int64",
+    "annual_consumption_in_barrels_ft1": "float64",
+    "annual_consumption_in_barrels_ft2": "float64",
+    "tailpipe_co2_ft1": "int64",
+    "tailpipe_co2_in_grams_mile_ft1": "float64",
+    "tailpipe_co2_ft2": "int64",
+    "tailpipe_co2_in_grams_mile_ft2": "float64",
+    "fuel_economy_score": "int64",
+    "ghg_score": "int64",
+    "ghg_score_alt_fuel": "int64",
+    "my_mpg_data": "object",
+    "x2d_passenger_volume": "int64",
+    "x2d_luggage_volume": "int64",
+    "x4d_passenger_volume": "int64",
+    "x4d_luggage_volume": "int64",
+    "hatchback_passenger_volume": "int64",
+    "hatchback_luggage_volume": "int64",
+    "start_stop_technology": "float64",
+    "alternative_fuel_technology": "object",
+    "electric_motor": "float64",
+    "manufacturer_code": "float64",
+    "gasoline_electricity_blended_cd": "bool",
+    "vehicle_charger": "float64",
+    "alternate_charger": "float64",
+    "hours_to_charge_120v": "int64",
+    "hours_to_charge_240v": "float64",
+    "hours_to_charge_ac_240v": "float64",
+    "composite_city_mpg": "int64",
+    "composite_highway_mpg": "int64",
+    "composite_combined_mpg": "int64",
+    "range_ft1": "int64",
+    "city_range_ft1": "float64",
+    "highway_range_ft1": "float64",
+    "range_ft2": "float64",
+    "city_range_ft2": "float64",
+    "highway_range_ft2": "float64"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "file_name": "cpi_raw.csv",
+  "timestamp": "2025-12-12T13:15:55.708173",
+  "row_count": 10,
+  "column_count": 1,
+  "missing_values": {},
+  "column_types": {
+    "Consumer Price Index for All Urban Consumers (CPI-U);;;;;;;;;;;;;;": "object"
+  }
+}

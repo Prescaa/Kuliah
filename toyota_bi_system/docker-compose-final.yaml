@@ -1,0 +1,160 @@
+# docker-compose-final.yaml - COMPLETE WITH DISCORD ALERTING & BACKUP
+services:
+  # 1. POSTGRESQL DATA WAREHOUSE
+  postgres_dw:
+    image: postgres:15
+    container_name: toyota_dwh
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: toyota_warehouse
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_dw_data:/var/lib/postgresql/data
+      - ./dwh/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d toyota_warehouse"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 2. MINIO DATA LAKE
+  minio:
+    image: minio/minio:RELEASE.2024-01-16T16-07-38Z
+    container_name: minio_datalake
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+
+  # 3. AIRFLOW DATABASE
+  postgres_airflow:
+    image: postgres:13
+    container_name: airflow_db
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres_airflow_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 4. AIRFLOW INIT
+  airflow-init:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    image: toyota-airflow-custom:latest
+    container_name: airflow_init
+    command: >
+      bash -c "
+        echo 'Waiting for Postgres...' &&
+        while ! nc -z postgres_airflow 5432; do   
+          sleep 1;
+        done;
+        echo 'Postgres is ready!' &&
+        
+        airflow db migrate &&
+        
+        airflow users create \
+          --username admin \
+          --password admin \
+          --firstname Admin \
+          --lastname User \
+          --role Admin \
+          --email admin@example.com || true &&
+        
+        echo 'Airflow Init Complete'
+      "
+    environment:
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres_airflow/airflow
+      - AIRFLOW__WEBSERVER__SECRET_KEY=toyota_bi_secret_key_2025_rifky
+    depends_on:
+      postgres_airflow:
+        condition: service_healthy
+    volumes:
+      - ./config:/opt/airflow/config
+
+  # 5. AIRFLOW WEBSERVER
+  airflow-webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    image: toyota-airflow-custom:latest
+    container_name: airflow_webserver
+    command: webserver
+    ports:
+      - "8080:8080"
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres_airflow/airflow
+      - AIRFLOW__CORE__LOAD_EXAMPLES=false
+      - AIRFLOW__WEBSERVER__SECRET_KEY=toyota_bi_secret_key_2025_rifky
+      - PYTHONPATH=/opt/airflow
+      # DISCORD CONFIGURATION (GANTI SMTP LAMA)
+      - DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/1448573706388377724/uJ-FfvTEwWjRimwFcUZNq3EB5hY9Pu-rlWV5vvNplQgmciPf1oy8S67gfglUmfJkTDc2
+    volumes:
+      - ./orchestration:/opt/airflow/dags
+      - ./ingest:/opt/airflow/ingest
+      - ./dwh:/opt/airflow/dwh
+      - ./ml:/opt/airflow/ml
+      - ./config:/opt/airflow/config
+      - ./data:/opt/airflow/data
+      - ./datalake:/opt/airflow/datalake
+      - ./dashboard:/opt/airflow/dashboard
+      - ./monitoring:/opt/airflow/monitoring
+      - ./backups:/opt/airflow/backups
+      - ./logs:/opt/airflow/logs
+    depends_on:
+      postgres_airflow:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+
+  # 6. AIRFLOW SCHEDULER
+  airflow-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    image: toyota-airflow-custom:latest
+    container_name: airflow_scheduler
+    command: scheduler
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres_airflow/airflow
+      - AIRFLOW__CORE__LOAD_EXAMPLES=false
+      - AIRFLOW__WEBSERVER__SECRET_KEY=toyota_bi_secret_key_2025_rifky
+      - PYTHONPATH=/opt/airflow
+      - DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/1448573706388377724/uJ-FfvTEwWjRimwFcUZNq3EB5hY9Pu-rlWV5vvNplQgmciPf1oy8S67gfglUmfJkTDc2
+    volumes:
+      - ./orchestration:/opt/airflow/dags
+      - ./ingest:/opt/airflow/ingest
+      - ./dwh:/opt/airflow/dwh
+      - ./ml:/opt/airflow/ml
+      - ./config:/opt/airflow/config
+      - ./data:/opt/airflow/data
+      - ./datalake:/opt/airflow/datalake
+      - ./dashboard:/opt/airflow/dashboard
+      - ./monitoring:/opt/airflow/monitoring
+      - ./backups:/opt/airflow/backups
+      - ./logs:/opt/airflow/logs
+    depends_on:
+      postgres_airflow:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+
+volumes:
+  postgres_dw_data:
+  postgres_airflow_data:
+  minio_data:

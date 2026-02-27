@@ -1,4 +1,4 @@
-# Membangun dan Membandingkan Model Regresi Linear Teroptimasi dalam Analisis Prediksi Popularitas Game pada Platform Twitch 2016–2024 [cite: 1]
+# Membandingkan Model Regresi Linear dalam Analisis Prediksi Popularitas Game pada Platform Twitch 2016–2024
 
 **Disusun oleh:**
 * Akmallullail Sya’ban (2310817310010)

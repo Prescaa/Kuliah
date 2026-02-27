@@ -2,9 +2,7 @@
 
 Jadi di dalam dokumen ini terdapat rangkaian logika yang dipakai selama proses pembangunan model regresi linear teroptimasi untuk memprediksi popularitas game di twitch.
 
-=========================
-1. LOAD & EXPLORE DATASET
-=========================
+### 1. LOAD & EXPLORE DATASET
 
 import pandas as pd
 import numpy as np
@@ -17,9 +15,7 @@ except:
 print(df_game.describe())
 print(df_game.isnull().sum())
 
-=========================
-2. HYBRID TARGET TRANSFORMATION
-=========================
+### 2. HYBRID TARGET TRANSFORMATION
 
 # Transformasi target ke skala logaritmik
 y_original = df_game['Hours_watched']
@@ -29,9 +25,7 @@ y_log = np.log1p(y_original)
 def inverse_target(y_log_val):
     return np.expm1(y_log_val)
 
-=========================
-3. FEATURE ENGINEERING (CYCLICAL & ERA)
-=========================
+### 3. FEATURE ENGINEERING (CYCLICAL & ERA)
 
 # Cyclical Month Encoding
 df_game['month_sin'] = np.sin(2 * np.pi * df_game['Month']/12)
@@ -40,9 +34,7 @@ df_game['month_cos'] = np.cos(2 * np.pi * df_game['Month']/12)
 # Era Encoding (Pra-Pandemi vs Era Modern)
 df_game['era_enc'] = df_game['Year'].apply(lambda x: 0 if x < 2020 else (1 if x < 2022 else 2))
 
-=========================
-4. HYBRID EXPERIMENT RUNNER
-=========================
+### 4. HYBRID EXPERIMENT RUNNER
 
 def run_hybrid_exp(name, model, X_train, X_test, y_train_log, y_test_log):
     # Training pada skala LOG
@@ -60,9 +52,7 @@ def run_hybrid_exp(name, model, X_train, X_test, y_train_log, y_test_log):
     
     return {"Model": name, "MAE": mae, "MAPE": mape, "R2": r2}
 
-=========================
-5. ENHANCED MODEL: RIDGE + POLY
-=========================
+### 5. ENHANCED MODEL: RIDGE + POLY
 
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.linear_model import Ridge
@@ -77,9 +67,7 @@ model_poly_ridge = Pipeline([
 # Eksperimen model terbaik
 res_poly = run_hybrid_exp("Ridge + Poly", model_poly_ridge, X_train, X_test, y_train_log, y_test_log)
 
-=========================
-6. STRESS TEST & LOGGING
-=========================
+### 6. STRESS TEST & LOGGING
 
 noise_levels = [0, 0.05, 0.1, 0.3]
 for sigma in noise_levels:

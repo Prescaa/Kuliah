@@ -1,0 +1,6 @@
+No,Model,Fitur,Parameter Utama,MAE,RMSE,MAPE,R2,Catatan
+1,LR Baseline,18 fitur,default,3013157,23121075,33.61%,0.9,"Model dasar, tanpa regularisasi"
+2,Ridge alpha=1.0,18 fitur,alpha=1.0,3013168,23122119,33.61%,0.9,Regularisasi L2 ringan
+3,Ridge alpha=10.0,18 fitur,alpha=10.0,3013271,23131461,33.61%,0.9,"Penalti lebih kuat, hasil stabil"
+4,Lasso alpha=0.01,18 fitur,alpha=0.01,3026438,23806954,33.93%,0.9,"L1 regularisasi, sedikit bias"
+5,Ridge + Poly,Poly Interaction,"alpha=50, deg=2",4879589,113510019,31.13%,0.93,R2 tertinggi & MAPE terbaik

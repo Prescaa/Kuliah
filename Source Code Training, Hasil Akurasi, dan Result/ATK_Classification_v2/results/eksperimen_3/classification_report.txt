@@ -1,0 +1,17 @@
+Eksperimen : Eksperimen 3 — SGD + Momentum (LR=0.01, Split 70/15/15)
+Experiment ID: eksperimen_3
+
+Accuracy  : 0.8824  (88.24%)
+Precision : 0.9160
+Recall    : 0.8824
+F1-Score  : 0.8804
+
+              precision    recall  f1-score   support
+
+      Pensil       0.71      1.00      0.83         5
+      Pulpen       1.00      0.67      0.80         6
+      Spidol       1.00      1.00      1.00         6
+
+    accuracy                           0.88        17
+   macro avg       0.90      0.89      0.88        17
+weighted avg       0.92      0.88      0.88        17

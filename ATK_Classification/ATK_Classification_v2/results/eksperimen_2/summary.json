@@ -1,0 +1,31 @@
+{
+  "name": "Eksperimen 2 — Fine-Tune (Adam, LR=0.0001, Fine-Tune aktif)",
+  "backbone": "MobileNetV2",
+  "img_size": [
+    224,
+    224
+  ],
+  "batch_size": 8,
+  "epochs": 50,
+  "learning_rate": 0.0001,
+  "optimizer": "adam",
+  "train_split": 0.8,
+  "val_split": 0.1,
+  "test_split": 0.1,
+  "fine_tune": true,
+  "fine_tune_from": 100,
+  "dropout_rate": 0.4,
+  "experiment_id": "eksperimen_2",
+  "output_dir": "C:\\Users\\User\\Downloads\\ATK_Classification_v2\\ATK_Classification_v2\\results\\eksperimen_2",
+  "train_acc_best": 0.9535,
+  "val_acc_best": 1.0,
+  "val_loss_best": 0.0862,
+  "test_accuracy": 0.8182,
+  "test_loss": 0.4774,
+  "epochs_run": 16,
+  "training_time_minutes": 0.81,
+  "total_dataset": 108,
+  "train_size": 86,
+  "val_size": 11,
+  "test_size": 11
+}
